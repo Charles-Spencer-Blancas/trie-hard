@@ -23,6 +23,23 @@ class TrieNode {
         return currentNode.isWord ? currentNode : null;
     }
 
+    findNode(word) {
+        word = word.toLowerCase();
+
+        let currentNode = this;
+
+        for (let i = 0; i < word.length; i++) {
+            let char = word[i];
+            if (char in currentNode.children) {
+                currentNode = currentNode.children[char];
+                continue;
+            }
+            return null;
+        }
+
+        return currentNode;
+    }
+
     insertWord(word) {
         word = word.toLowerCase();
         let currentNode = this;

@@ -1,0 +1,10 @@
+@import url('./colors.css');
+@import url('normalize.css');
+
+.valid {
+    background-color: var(--valid)
+}
+
+.invalid {
+    background-color: var(--invalid)
+}

@@ -66,11 +66,4 @@ class TrieNode {
     }
 }
 
-const root = new TrieNode('', {});
-
-const lines = words;
-lines.forEach((line) => {
-    root.insertWord(line);
-});
-
-export { TrieNode, root };
+export { TrieNode };

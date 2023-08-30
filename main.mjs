@@ -1,7 +1,25 @@
-import { TrieNode, root } from './trie.mjs';
+import { TrieNode } from './trie.mjs';
+import { google10kWords } from './google10k.mjs';
+
+const root = new TrieNode('', {});
+
+const lines = google10kWords;
+lines.forEach((line) => {
+    root.insertWord(line);
+});
 
 const input = document.getElementById('input');
 const result = document.getElementById('result');
+
+const validWord = () => {
+    input.classList.add('valid');
+    input.classList.remove('invalid');
+};
+
+const invalidWord = () => {
+    input.classList.add('invalid');
+    input.classList.remove('valid');
+};
 
 const inputHandler = (e) => {
     const word = e.target.value;
@@ -9,8 +27,7 @@ const inputHandler = (e) => {
 
     if (!node) {
         result.innerText = 'No words found';
-        input.classList.add('invalid');
-        input.classList.remove('valid');
+        invalidWord();
         return;
     }
 
@@ -32,13 +49,7 @@ const inputHandler = (e) => {
 
     result.innerText = outputs || 'No words found';
 
-    if (node.isWord) {
-        input.classList.add('valid');
-        input.classList.remove('invalid');
-    } else {
-        input.classList.add('invalid');
-        input.classList.remove('valid');
-    }
+    node.isWord ? validWord() : invalidWord();
 };
 
 input.addEventListener('input', inputHandler);

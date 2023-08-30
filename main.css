@@ -1,10 +1,31 @@
 @import url('./colors.css');
 @import url('normalize.css');
 
-.valid {
+html {
+    display: flex;
+    justify-content: center;    
+}
+
+body {
+    max-width: 720px;
+}
+
+/* HEADER */
+header h1 {
+    text-align: center;
+}
+
+/* MAIN */
+main {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+main .valid {
     background-color: var(--valid)
 }
 
-.invalid {
+main .invalid {
     background-color: var(--invalid)
 }

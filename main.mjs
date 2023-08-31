@@ -22,10 +22,11 @@ const invalidWord = () => {
     input.classList.remove('valid');
 };
 
-const inputHandler = (e) => {
-    const word = e.target.value;
+const inputHandler = async (e) => {
+    const word = e.target.innerText.trim();
 
-    if (word === '') {
+    if (!word) {
+        console.log('hi');
         result.innerText = '';
         input.classList.remove('invalid');
         input.classList.remove('valid');

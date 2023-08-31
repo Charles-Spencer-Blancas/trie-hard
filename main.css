@@ -23,6 +23,11 @@ main {
     flex-direction: column;
 }
 
+main #input {
+    border: solid 1px;
+    padding: 4px;
+}
+
 main .valid {
     background-color: var(--valid)
 }

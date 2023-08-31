@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="color-scheme" content="light dark" />
         <title>Trie Hard</title>
         <link rel="stylesheet" href="main.css" />
     </head>
@@ -13,7 +14,10 @@
         </header>
         <main>
             <input id="input" />
-            <div id="result"></div>
+            <div class="resultContainer">
+                <h3 id="notRecognized" class="hidden">Did you mean?</h3>
+                <div id="result"></div>
+            </div>
         </main>
         <footer></footer>
 

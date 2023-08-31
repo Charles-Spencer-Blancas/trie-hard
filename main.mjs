@@ -10,6 +10,7 @@ lines.forEach((line) => {
 
 const input = document.getElementById('input');
 const result = document.getElementById('result');
+const notRecognized = document.getElementById('notRecognized');
 
 const validWord = () => {
     input.classList.add('valid');
@@ -23,6 +24,15 @@ const invalidWord = () => {
 
 const inputHandler = (e) => {
     const word = e.target.value;
+
+    if (word === '') {
+        result.innerText = '';
+        input.classList.remove('invalid');
+        input.classList.remove('valid');
+        notRecognized.classList.add('hidden');
+        return;
+    }
+
     const node = root.findNode(word);
 
     if (!node) {
@@ -49,6 +59,7 @@ const inputHandler = (e) => {
 
     result.innerText = outputs || 'No words found';
 
+    notRecognized.classList.remove('hidden');
     node.isWord ? validWord() : invalidWord();
 };
 

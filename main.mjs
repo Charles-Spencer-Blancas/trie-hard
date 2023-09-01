@@ -11,15 +11,18 @@ lines.forEach((line) => {
 const input = document.getElementById('input');
 const result = document.getElementById('result');
 const notRecognized = document.getElementById('notRecognized');
+const addToDictionary = document.getElementById('addToDictionary');
 
 const validWord = () => {
     input.classList.add('valid');
     input.classList.remove('invalid');
+    addToDictionary.setAttribute('disabled', '');
 };
 
 const invalidWord = () => {
     input.classList.add('invalid');
     input.classList.remove('valid');
+    addToDictionary.removeAttribute('disabled');
 };
 
 const inputHandler = (e) => {
@@ -30,6 +33,7 @@ const inputHandler = (e) => {
         input.classList.remove('invalid');
         input.classList.remove('valid');
         notRecognized.classList.add('hidden');
+        addToDictionary.setAttribute('disabled', '');
         return;
     }
 
@@ -65,3 +69,12 @@ const inputHandler = (e) => {
 
 input.addEventListener('input', inputHandler);
 input.addEventListener('propertychange', inputHandler);
+
+const addToDictionaryHandler = (e) => {
+    let word = input.value;
+    root.insertWord(word);
+    validWord();
+    inputHandler({ target: { value: word } });
+};
+
+addToDictionary.addEventListener('click', addToDictionaryHandler);

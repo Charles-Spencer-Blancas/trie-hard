@@ -1,17 +1,35 @@
 import { TrieNode } from './trie.mjs';
 import { google10kWords } from './google10k.mjs';
+import { words } from './words.mjs';
 
-const root = new TrieNode('', {});
-
-const lines = google10kWords;
-lines.forEach((line) => {
-    root.insertWord(line);
-});
+let root = new TrieNode('', {});
 
 const input = document.getElementById('input');
 const result = document.getElementById('result');
 const notRecognized = document.getElementById('notRecognized');
 const addToDictionary = document.getElementById('addToDictionary');
+const google10kButton = document.getElementById('google10kWords');
+const wordsButton = document.getElementById('words');
+
+const loadDictionary = (dictionary) => {
+    result.innerText = '';
+    input.classList.remove('invalid');
+    input.classList.remove('valid');
+    notRecognized.classList.add('hidden');
+    addToDictionary.setAttribute('disabled', '');
+    input.value = '';
+
+    root = new TrieNode('', {});
+
+    dictionary.forEach((word) => {
+        root.insertWord(word);
+    });
+};
+
+loadDictionary(google10kWords);
+
+google10kButton.addEventListener('click', () => loadDictionary(google10kWords));
+wordsButton.addEventListener('click', () => loadDictionary(words));
 
 const validWord = () => {
     input.classList.add('valid');

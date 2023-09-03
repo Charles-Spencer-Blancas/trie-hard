@@ -13,14 +13,20 @@
             <h2>Predictive text using a trie data structure</h2>
         </header>
         <main>
-            <div class="inputContainer">
-                <input id="input" /><button id="addToDictionary" disabled>
-                    Add to Dictionary
-                </button>
+            <div class="playzone">
+                <div class="inputContainer">
+                    <input id="input" /><button id="addToDictionary" disabled>
+                        Add to Dictionary
+                    </button>
+                </div>
+                <div class="resultContainer">
+                    <h3 id="notRecognized" class="hidden">Did you mean?</h3>
+                    <div id="result"></div>
+                </div>
             </div>
-            <div class="resultContainer">
-                <h3 id="notRecognized" class="hidden">Did you mean?</h3>
-                <div id="result"></div>
+            <div id="dictionaries">
+                <button id="google10kWords">Google 10k</button>
+                <button id="words">dwyl 400k</button>
             </div>
         </main>
         <footer></footer>
